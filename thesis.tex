@@ -1,0 +1,108 @@
+\documentclass{uob-thesis}
+
+\usepackage{lipsum}
+
+\addbibresource{refs.bib}
+
+%% AUTHOR DETAILS
+
+\title{A Deep and Interesting Thesis}
+\subtitle{with applications to life}
+\author{Elon Turing}
+\degree{PhD in Computer Science}
+\school{School of Computer Science}
+\faculty{Faculty of Engineering}
+\date{August 2052}
+\wordcount{1234}
+
+\begin{document}
+
+%%% -------------------------------------------------
+%%% THESE TITLE PAGES ARE SPECIFIED BY THE REGULATIONS
+%%% DO NOT CHANGE ORDER 
+
+\KOMAoptions{twoside=off}
+\recalctypearea
+
+\maketitle
+
+\cleardoublepage
+
+\begin{abstract}
+  % no more than 300 words!
+  \lipsum[1-2]
+\end{abstract}
+
+\begin{dedication}
+  To my darling mama,\\
+  sine-qua-non.
+\end{dedication}
+
+\begin{acknowledgements}
+  To this and to that
+\end{acknowledgements}
+
+\begin{declaration}
+  I declare that the work in this dissertation was carried out in accordance
+  with the requirements of the University's Regulations and Code of Practice for
+  Research Degree Programmes and that it has not been submitted for any other
+  academic award. Except where indicated by specific reference in the text, the
+  work is the candidate's own work. Work done in collaboration with, or with the
+  assistance of, others, is indicated as such. Any views expressed in the
+  dissertation are those of the author.
+\end{declaration}
+
+\KOMAoptions{twoside=on}
+\recalctypearea
+
+%%%
+%%% TITLE PAGES END HERE
+%%% ----------------------
+
+
+%%%
+%% FRONT MATTER
+%%%
+
+\frontmatter
+
+%% THESE MUST BE IN THIS ORDER ACCORDING TO REGULATIONS
+\tableofcontents
+\listoftables
+\listoffigures
+
+
+%%%%%%%%%%%%%%
+%% MAIN MATTER
+%%%%%%%%%%%%%%
+
+\mainmatter
+
+\part{Lorem}
+
+\chapter{Lorem Ipsum}
+
+\lipsum[1-2]
+\parencite{qian2021}
+\lipsum[2-13]
+\textcite{qian2021}
+
+\section{Yes?}
+
+\lipsum[13-16]
+\subsection{Title}
+Text
+\subsubsection{Title}
+Text
+
+%%%%%%%%%%%%%%%
+%% BACK MATTER
+%%%%%%%%%%%%%%%
+
+\backmatter
+
+\chapter{Bibliography}
+
+\printbibliography[heading=none]
+
+\end{document}
