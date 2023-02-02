@@ -151,7 +151,11 @@
 
 %% TITLE PAGE
 
-\NewDocumentCommand{\printdate}{m}{\DTMusedate{#1}}
+\NewDocumentCommand{\printdatewithoutmonth}{m}{
+  \DTMdefboolkey{en-GB}{showdayofmonth}[false]{} 
+  \DTMusedate{#1}
+  \DTMdefboolkey{en-GB}{showdayofmonth}[true]{} 
+}
 
 
 \newtoks\@degree
