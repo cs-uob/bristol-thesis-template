@@ -7,16 +7,26 @@
 %%
 
 \RequirePackage{xkeyval}
+\RequirePackage{xparse}
+
+%% variable holding whether entire document should be one- or two-sided
+\newtoks\@uobtwoside
+\@uobtwoside={semi}
 
 %% KOMA stuff
 
 \PassOptionsToClass{
   a4paper,
+  twoside={\the\@uobtwoside},
   fontsize=11pt,
-  twoside,
   listof=totoc,
   listof=chapterentry,
+  titlepage=firstiscover,
 }{scrbook}
+
+\DeclareOptionX{twoside}{
+  \@uobtwoside={true}
+}
 
 %% Forward other options to KOMA
 \DeclareOptionX*{%
@@ -29,11 +39,38 @@
 %% LOAD KOMA CLASS
 
 \LoadClass{scrbook}
+\RequirePackage{scrlayer-scrpage}
+
+%% Font options
+
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+
+\setkomafont{disposition}{\bfseries}
+\addtokomafont{title}{\Huge}
+\linespread{1.5} % some extra spacing
+
+
+%% Set page style and recalculate type area
+
+\KOMAoptions{headinclude=true, DIV=10}
+
+\renewcommand*{\partpagestyle}{empty}
+\pagestyle{scrheadings}
+\cfoot*{\pagemark}
+\ofoot[]{}
+\ifoot[]{}
+
+\recalctypearea
+
+
 
 %% Load useful packages
 
+\RequirePackage[british]{datetime2}
+\DTMlangsetup[en-GB]{ord=omit}
+
 \RequirePackage{bristol-colours}
-\RequirePackage{xparse}
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
@@ -51,14 +88,17 @@
 \RequirePackage{etoolbox}
 \RequirePackage{thmtools}
 
-%% Font options
+%% Macro for re-setting whether one- or two-sided
 
-\usepackage[T1]{fontenc}
-\usepackage{microtype}
+% \NewDocumentCommand{\settwoside}{o}{
+%   \IfValueTF{#1}{
+%     \KOMAoptions{twoside={#1}}
+%   }{
+%     \KOMAoptions{twoside={\the\@uobtwoside}}
+%   }
+%   \recalctypearea
+% }
 
-\setkomafont{disposition}{\bfseries}
-\addtokomafont{title}{\Huge}
-\linespread{1.5} % some extra spacing
 
 %% Bibliography options 
 
@@ -109,16 +149,10 @@
 \hypersetup{breaklinks=true,colorlinks=true,linkcolor=UniversityRed,urlcolor=UniversityRed, citecolor=UniversityRed}
 
 
-%% PAGE STYLES
-
-\usepackage[automark]{scrlayer-scrpage}
-\renewcommand*{\partpagestyle}{empty}
-\pagestyle{scrheadings}
-\cfoot*{\pagemark}
-\ofoot[]{}
-\ifoot[]{}
-
 %% TITLE PAGE
+
+\NewDocumentCommand{\printdate}{m}{\DTMusedate{#1}}
+
 
 \newtoks\@degree
 \NewDocumentCommand{\degree}{m}{\@degree={#1}}
@@ -140,7 +174,7 @@
   \ofoot*{\normalfont Word count: \the\@wordcount}
 }
 % \renewcommand*{\titlepagestyle}{titlepage}
-\titlehead{\thispagestyle{titlepage}}
+\titlehead{\thispagestyle{titlepage} \recalctypearea}
 
 \publishers{
   \bigskip\bigskip\bigskip
@@ -151,15 +185,14 @@
 }
 
 \NewDocumentEnvironment{abstract}{+b}{%
+  \recalctypearea
   \thispagestyle{empty}
   \begin{center}
     {\Large\bfseries Abstract}\\
-    \medskip\medskip
   \end{center}
-  \quotation
+  \bigskip
   {#1}
-  \endquotation
-  \cleardoublepage
+  \cleardoubleoddemptypage
 }{}
 
 \RenewDocumentEnvironment{dedication}{+b}{
@@ -167,7 +200,7 @@
   \begin{center}
     \Large\itshape {#1}
   \end{center}
-  \cleardoublepage
+  \cleardoubleoddemptypage
 }{}
 
 \NewDocumentEnvironment{acknowledgements}{+b}{
@@ -175,8 +208,9 @@
   \begin{center}
     \Large\bfseries Acknowledgements
   \end{center}
+  \bigskip
   {#1}
-  \cleardoublepage
+  \cleardoubleoddemptypage
 }{}
 
 \NewDocumentEnvironment{declaration}{+b}{
@@ -185,10 +219,11 @@
   \begin{center}
     \Large\bfseries Author's Declaration
   \end{center}
+  \bigskip
   \quotation
   {#1} 
   \endquotation
-  \vspace{6em}
-  \@author
-  \cleardoublepage
+  \@author \\
+  \DTMusedate{thesisdate}
+  \cleardoubleoddpage
 }{}
