@@ -54,7 +54,6 @@
 %% Font options
 
 \usepackage[T1]{fontenc}
-\renewcommand{\bfdefault}{b}
 \usepackage{microtype}
 
 \setkomafont{disposition}{\bfseries}
