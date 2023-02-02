@@ -59,7 +59,6 @@
 
 \setkomafont{disposition}{\bfseries}
 \addtokomafont{title}{\Huge}
-\setkomafont{section}{\centering\normalfont\scshape\large}
 \linespread{1.5} % some extra spacing
 
 %% Bibliography options 
