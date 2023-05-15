@@ -1,6 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{uob-thesis}[2023/05/15 University of Bristol thesis template]
-
+%% Prepared by Alex Kavvos in 2023.
+%%
 %% BUILT ACCORDING TO THE PGT AND PGR CODE:
 %%
 %%  http://www.bristol.ac.uk/academic-quality/pg/pgrcode/annex4/
