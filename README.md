@@ -5,7 +5,7 @@ Taught (e.g. MSc) and Research Degrees (e.g. PhDs). These may be found at the
 following links:
 
   http://www.bristol.ac.uk/media-library/sites/academic-quality/documents/taught-code/annexes/dissertations.pdf
-  http://www.bristol.ac.uk/academic-quality/pg/pgrcode/annex1/
+  http://www.bristol.ac.uk/academic-quality/pg/pgrcode/annex4/
 
 The template also seems appropriate for undergraduate dissertations (for
 integrated masters degrees), as the format of these is not strictly specified.
