@@ -1,9 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{uob-thesis}[2023/02/02 University of Bristol thesis template]
+\ProvidesClass{uob-thesis}[2023/05/15 University of Bristol thesis template]
 
-%% BUILT ACCORDING TO THE PGR CODE:
+%% BUILT ACCORDING TO THE PGT AND PGR CODE:
 %%
-%%    http://www.bristol.ac.uk/academic-quality/pg/pgrcode/annex4/
+%%  http://www.bristol.ac.uk/academic-quality/pg/pgrcode/annex4/
+%%  http://www.bristol.ac.uk/media-library/sites/academic-quality/documents/taught-code/annexes/dissertations.pdf
 %%
 
 \RequirePackage{xkeyval}
@@ -12,6 +13,10 @@
 %% variable holding whether entire document should be one- or two-sided
 \newtoks\@uobtwoside
 \@uobtwoside={semi}
+\newtoks\@uobbiblio
+
+%% variable holding style of bibliography
+\@uobbiblio={acmauthoryear}
 
 %% KOMA stuff
 
@@ -24,9 +29,9 @@
   titlepage=firstiscover,
 }{scrbook}
 
-\DeclareOptionX{twoside}{
-  \@uobtwoside={true}
-}
+\DeclareOptionX{twoside}{\@uobtwoside={true}}
+\DeclareOptionX{ieee}{\@uobbiblio={ieee}}
+\DeclareOptionX{acmnumeric}{\@uobbiblio={acmnumeric}}
 
 %% Forward other options to KOMA
 \DeclareOptionX*{%
@@ -107,7 +112,7 @@
   doi=true,
   backref=true,
   sortcites=true,
-  style=acmauthoryear,
+  style={\the\@uobbiblio},
   maxnames=1000,
   mincrossrefs=99,
   sorting=nyt,
@@ -126,7 +131,7 @@
       % \step[fieldset=address, null]
       % \step[fieldset=location, null]
       \step[fieldset=month, null]
-      % \step[fieldset=eprint, null] % remove this to print arXiv numbers
+      % \step[fieldset=eprint, null]    % comment this to erase arXiv idents
     }
   }
 }
