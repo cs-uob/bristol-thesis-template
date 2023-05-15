@@ -32,18 +32,19 @@ latexmk -c
 
 to clean the repository.
 
-## Bibiliography
+## Bibliography
 
 The template has been prepared to use `biber` to generate citations from BibTeX.
 
 Put your BibTeX source in `refs.bib`. Then, within the main text of your thesis, use
 ```
 \textcite{qian_2021}
+```
 or
 ```
 \parencite{qian_2021}
 ```
-or get a textual or parenthetical citation.
+or get a textual or parenthetical citation respectively.
 
 The default style is [ACM citation
 style](https://www.acm.org/publications/authors/reference-formatting). The
