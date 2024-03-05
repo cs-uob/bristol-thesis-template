@@ -182,7 +182,7 @@
 
 \publishers{
   \bigskip\bigskip\bigskip
-  \includegraphics[width=0.5\textwidth]{bristol-logo.png} \\[2em]
+  \includegraphics[width=0.5\textwidth]{UoB_RGB_24.jpg} \\[2em]
   A dissertation submitted to the University of Bristol in accordance with the requirements for award of the degree of {\the\@degree} in the {\the\@faculty}. \\[2em]
   \the\@school \\
   \the\@date \\
