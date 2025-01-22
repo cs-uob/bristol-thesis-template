@@ -112,7 +112,7 @@
 
 \RequirePackage[
   backend=biber,
-  datamodel=acmdatamodel,
+  % datamodel=acmdatamodel,
   style={\the\@uobbiblio},
   sorting=anyt,
 ]{biblatex}
