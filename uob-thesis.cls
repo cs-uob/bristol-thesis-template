@@ -5,7 +5,6 @@
 %% BUILT ACCORDING TO THE PGT AND PGR CODE:
 %%
 %%  http://www.bristol.ac.uk/academic-quality/pg/pgrcode/annex4/
-%%  http://www.bristol.ac.uk/media-library/sites/academic-quality/documents/taught-code/annexes/dissertations.pdf
 %%
 
 \RequirePackage{xkeyval}
@@ -31,8 +30,7 @@
 }{scrbook}
 
 \DeclareOptionX{twoside}{\@uobtwoside={true}}
-\DeclareOptionX{ieee}{\@uobbiblio={ieee}}
-\DeclareOptionX{acmnumeric}{\@uobbiblio={acmnumeric}}
+\DeclareOptionX{bibstyle}{\@uobbiblio={#1}}
 
 %% Forward other options to KOMA
 \DeclareOptionX*{%
@@ -40,7 +38,7 @@
 }
 \ProcessOptionsX*\relax
 
-\usepackage{mlmodern}
+\RequirePackage{mlmodern}
 
 %% LOAD KOMA CLASS
 
@@ -49,8 +47,8 @@
 
 %% Font options
 
-\usepackage[T1]{fontenc}
-\usepackage{microtype}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{microtype}
 
 \setkomafont{disposition}{\bfseries}
 \addtokomafont{title}{\Huge}
@@ -68,8 +66,6 @@
 \ifoot[]{}
 
 \recalctypearea
-
-
 
 %% Load useful packages
 
@@ -94,6 +90,12 @@
 \RequirePackage{etoolbox}
 \RequirePackage{thmtools}
 
+%% HYPERREF AND CLEVEREF 
+
+\RequirePackage[pdfusetitle,hyperfootnotes=false]{hyperref}
+\hypersetup{breaklinks=true,colorlinks=true,linkcolor=UniversityRed,urlcolor=UniversityRed,citecolor=UniversityRed}
+\RequirePackage[nameinlink]{cleveref}
+
 %% Macro for re-setting whether one- or two-sided
 
 % \NewDocumentCommand{\settwoside}{o}{
@@ -110,49 +112,13 @@
 
 \RequirePackage[
   backend=biber,
-  doi=true,
-  backref=true,
-  sortcites=true,
+  datamodel=acmdatamodel,
   style={\the\@uobbiblio},
-  maxnames=1000,
-  mincrossrefs=99,
-  sorting=nyt,
-  sortcites
+  sorting=anyt,
 ]{biblatex}
 
 % this is necessary to use ACM references in a non-ACM class
-\newcommand{\bibliofont}{\normalsize}
-\renewcommand*{\bibfont}{\bibliofont}
-
-%% remove from bibtex: isbn, address, location, month
-\DeclareSourcemap{
-  \maps[datatype=bibtex, overwrite]{
-    \map{
-      % \step[fieldset=isbn, null]
-      % \step[fieldset=address, null]
-      % \step[fieldset=location, null]
-      \step[fieldset=month, null]
-      % \step[fieldset=eprint, null]    % comment this to erase arXiv idents
-    }
-  }
-}
-
-%% checks if doi is non-null; if yes, clear URL
-\DeclareSourcemap{
-  \maps[datatype=bibtex]{
-     \map{
-        \step[fieldsource=doi,final]
-        \step[fieldset=url,null]
-        }
-      }
-}
-
-%% Hyperref 
-
-\usepackage[pdfusetitle,hyperfootnotes=false]{hyperref}
-\usepackage{hyperref}
-\usepackage[capitalize,nameinlink]{cleveref}
-\hypersetup{breaklinks=true,colorlinks=true,linkcolor=UniversityRed,urlcolor=UniversityRed, citecolor=UniversityRed}
+\renewcommand*{\bibfont}{\normalsize}
 
 
 %% TITLE PAGE
@@ -162,7 +128,6 @@
   \DTMusedate{#1}
   \DTMdefboolkey{en-GB}{showdayofmonth}[true]{} 
 }
-
 
 \newtoks\@degree
 \NewDocumentCommand{\degree}{m}{\@degree={#1}}
@@ -224,7 +189,6 @@
 }{}
 
 \NewDocumentEnvironment{declaration}{+b}{
-  \thispagestyle{empty}
   \thispagestyle{empty}
   \begin{center}
     \Large\bfseries Author's Declaration
