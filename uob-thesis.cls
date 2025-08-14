@@ -188,6 +188,16 @@
   \cleardoubleoddemptypage
 }{}
 
+\NewDocumentEnvironment{statement}{+b}{
+  \thispagestyle{empty}
+  \begin{center}
+    \large\bfseries Statement on the inclusion of published and collaborative work
+  \end{center}
+  \bigskip
+  {#1}
+  \cleardoubleoddemptypage
+}{}
+
 \NewDocumentEnvironment{declaration}{+b}{
   \thispagestyle{empty}
   \begin{center}
