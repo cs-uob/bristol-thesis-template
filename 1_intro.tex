@@ -7,6 +7,20 @@ This is the main text. You may cite in two ways:
 
 However, you could also cite \textcite{Sayama2020}, or \textcite{Bullock2023}.
 
+You may create an abbreviation using \newabbreviation{btm}{BTM}{Bristol Temple Meads}
+\begin{center}
+    \begin{verbatim}
+        \newabbreviation{btm}{BTM}{Bristol Temple Meads}
+    \end{verbatim}
+\end{center}
+and subsequently expand it via
+\begin{center}
+    \begin{verbatim}
+        \gls{btm}
+    \end{verbatim}
+\end{center}
+which yields \gls{btm} on the first occurrence and \gls{btm} subsequently.
+
 \lipsum[1-2]
 
 \section{Yes?}
