@@ -107,6 +107,20 @@
 %   \recalctypearea
 % }
 
+% Glossary options
+% List of abbreviations mandatory per regs
+% General glossary optional
+\RequirePackage[
+    toc, % appears in the table of contents
+    abbreviations,
+    nomain,            
+    nogroupskip, % option to group entries by initial character
+    docdef=true,
+    style=index,
+    automake,
+]{glossaries-extra}
+\setabbreviationstyle[abbreviations]{long-short}
+\makeglossaries
 
 %% Bibliography options 
 
